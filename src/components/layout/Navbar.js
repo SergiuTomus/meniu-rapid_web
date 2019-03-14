@@ -10,7 +10,7 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/feed">
-            Post Feed
+            Order Feed
           </Link>
         </li>
         <li className="nav-item">
@@ -31,7 +31,7 @@ class Navbar extends Component {
               style={{ width: '25px', marginRight: '5px' }}
               title="You must have a Gravatar connected to your email to display an image"
             />{' '}
-            Logout
+            Deconectare
           </a>
         </li>
       </ul>
@@ -40,13 +40,13 @@ class Navbar extends Component {
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/register">
-            Sign Up
+          <Link className="nav-link" to="/login">
+            Autentificare
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/login">
-            Login
+          <Link className="nav-link" to="/contact">
+            Contact
           </Link>
         </li>
       </ul>
@@ -55,9 +55,9 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4" style={{ color: 'white' }}>
         <div className="container">
-          <a className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/">
             MeniuRapid
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -70,10 +70,10 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <a className="nav-link" to="/profiles">
+                <Link className="nav-link" to="/orders">
                   {' '}
                   Orders
-                </a>
+                </Link>
               </li>
             </ul>
             {isAuthenticated ? authLinks : guestLinks}
