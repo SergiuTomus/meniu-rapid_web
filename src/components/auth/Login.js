@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { withRouter } from 'react-router-dom';
+import { loginUser } from '../../store/actions/authActions';
 
 class Login extends Component {
   state = {
@@ -9,22 +11,23 @@ class Login extends Component {
     errors: {}
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value }); // for all inputs
   }
+
   onSubmit = event => {
     event.preventDefault();
     const user = {
       email: this.state.email,
       password: this.state.password
     }
-    axios.post('http://localhost:3005/client/login', user)
-      .then(result => {
-        console.log(result.data);
-      })
-      .catch(err => {
-        this.setState({ errors: err.response.data });
-      });
+    this.props.loginUser(user, this.props.history);
   }
 
   render() {
@@ -95,4 +98,13 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+    errors: state.errors
+  };
+};
+
+const mapDispatchToProps = { loginUser: loginUser };  // as an object with action creators
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login));
