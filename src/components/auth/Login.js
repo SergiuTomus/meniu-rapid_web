@@ -12,6 +12,10 @@ class Login extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.authenticated) {
+      this.props.history.push('orders')         // using withRouter
+    }
+
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -27,7 +31,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     }
-    this.props.loginUser(user, this.props.history);
+    this.props.loginUser(user);
   }
 
   render() {

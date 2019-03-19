@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../store/actions/authActions';
 
 class Navbar extends Component {
+  onLogout = (event) => {
+    // event.preventDefault();
+    this.props.logoutUser();
+  }
+
   render() {
-    // const { isAuthenticated, user } = this.props.auth;
-    const isAuthenticated = false;
+    const { authenticated, user } = this.props.auth;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/feed">
-            Order Feed
+            Comenzi
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/dashboard">
-            Dashboard
+            Profilul Meu
           </Link>
         </li>
         <li className="nav-item">
-          <a
-            href=""
-            // onClick={this.onLogoutClick.bind(this)}
+          <Link
+            to="/"
+            onClick={this.onLogout}
             className="nav-link"
           >
-            <img
+            {/* <img
               className="rounded-circle"
               // src={user.avatar}
               // alt={user.name}
               style={{ width: '25px', marginRight: '5px' }}
-              title="You must have a Gravatar connected to your email to display an image"
-            />{' '}
+            />{' '} */}
             Deconectare
-          </a>
+          </Link>
         </li>
       </ul>
     );
@@ -55,7 +60,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4" style={{ color: 'white' }}>
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to={authenticated ? "/orders" : "/"}>
             MeniuRapid
           </Link>
           <button
@@ -68,15 +73,7 @@ class Navbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/orders">
-                  {' '}
-                  Orders
-                </Link>
-              </li>
-            </ul>
-            {isAuthenticated ? authLinks : guestLinks}
+            {authenticated ? authLinks : guestLinks}
           </div>
         </div>
       </nav>
@@ -84,5 +81,10 @@ class Navbar extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  };
+};
 
-export default Navbar;
+export default connect(mapStateToProps, { logoutUser })(Navbar);
