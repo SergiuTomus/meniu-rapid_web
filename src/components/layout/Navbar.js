@@ -15,13 +15,13 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/feed">
+          <Link className="nav-link" to="/comenzi">
             Comenzi
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/dashboard">
-            Profilul Meu
+          <Link className="nav-link" to="/profil">
+            Profil
           </Link>
         </li>
         <li className="nav-item">
@@ -35,7 +35,7 @@ class Navbar extends Component {
               // src={user.avatar}
               // alt={user.name}
               style={{ width: '25px', marginRight: '5px' }}
-            />{' '} */}
+            /> */}
             Deconectare
           </Link>
         </li>
@@ -60,7 +60,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4" style={{ color: 'white' }}>
         <div className="container">
-          <Link className="navbar-brand" to={authenticated ? "/orders" : "/"}>
+          <Link className="navbar-brand" to={authenticated ? "/comenzi" : "/"}>
             MeniuRapid
           </Link>
           <button

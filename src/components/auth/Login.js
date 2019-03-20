@@ -11,9 +11,15 @@ class Login extends Component {
     errors: {}
   };
 
+  componentDidMount() {
+    if (this.props.auth.authenticated) {
+      this.props.history.push('/comenzi');          // if auth and writing '/login' in URL
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.authenticated) {
-      this.props.history.push('orders')         // using withRouter
+      this.props.history.push('comenzi')         // using withRouter
     }
 
     if (nextProps.errors) {
@@ -60,23 +66,6 @@ class Login extends Component {
                   />
                   {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                 </div>
-                {/* <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  error={errors.email}
-                /> */}
-
-                {/* <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  error={errors.password}
-                /> */}
                 <div className="form-group">
                   <input
                     type="password"
