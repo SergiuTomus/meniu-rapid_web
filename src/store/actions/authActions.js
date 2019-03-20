@@ -15,8 +15,9 @@ export const setCurrentUser = (decoded) => {
 // Login - Get User Token
 export const loginUser = (user) => {
   return (dispatch) => {  // we have dispatch because we use redux-thunk
-    axios.post('http://localhost:3005/client/login', user)
+    axios.post('http://localhost:3005/admin/login', user)
       .then(result => {
+        console.log(result.data);
         const { token } = result.data;
         localStorage.setItem('jwtToken', token); // set token to localStorage
         setAuthHeader(token);       // Set token to Authorization header
