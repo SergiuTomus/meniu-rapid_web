@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../store/actions/authActions';
+import { clearProfile } from '../../store/actions/profileActions';
 
 class Navbar extends Component {
   onLogout = (event) => {
-    // event.preventDefault();
+    this.props.clearProfile();
     this.props.logoutUser();
   }
 
   render() {
-    const { authenticated, user } = this.props.auth;
+    const { authenticated } = this.props.auth;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
@@ -87,4 +88,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { logoutUser })(Navbar);
+export default connect(mapStateToProps, { logoutUser, clearProfile })(Navbar);
