@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserProfile } from '../../store/actions/profileActions';
+import Spinner from '../layout/Spinner'
 
 class Profile extends Component {
 
@@ -9,14 +10,15 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.props.userProfile.profile)
     const { user } = this.props.auth;
-    const { profile, loading } = this.props.profile;
+    const { profile, loading } = this.props.userProfile;
     let profileContent;
 
     if (profile === null || loading) {
-      profileContent = <h4>Loading...</h4>
+      profileContent = <Spinner />;
     } else {
-      profileContent = <h4>Admin: {user.name}</h4>
+      profileContent = <h4>{profile.user.user_status}: {user.name}</h4>
     }
 
     return (
@@ -37,7 +39,7 @@ class Profile extends Component {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
-    profile: state.profile
+    userProfile: state.profile
   };
 };
 

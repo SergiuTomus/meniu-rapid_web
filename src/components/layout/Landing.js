@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Landing extends Component {
   componentDidMount() {
     if (this.props.auth.authenticated) {
-      this.props.history.push('/comenzi');          // if auth and writing '/' in URL
+      this.props.history.push('/profil');          // if auth and writing '/' in URL
     }
   }
 

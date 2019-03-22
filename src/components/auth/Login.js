@@ -13,13 +13,13 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.authenticated) {
-      this.props.history.push('/comenzi');          // if auth and writing '/login' in URL
+      this.props.history.push('/profil');          // if auth and writing '/login' in URL
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.authenticated) {
-      this.props.history.push('comenzi')         // using withRouter
+      this.props.history.push('/profil')         // using withRouter
     }
 
     if (nextProps.errors) {
