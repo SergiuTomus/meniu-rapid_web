@@ -1,0 +1,8 @@
+.nav-tabs .nav-link.active {
+    color: #4a586d;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 4px solid !important;
+    font-size: 20px;
+    font-weight: bold;
+}

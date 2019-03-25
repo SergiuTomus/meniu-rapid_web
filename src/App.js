@@ -12,6 +12,7 @@ import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Profile from './components/profile/Profile';
+import Orders from './components/orders/Orders';
 import './App.css';
 
 // Check for token
@@ -41,6 +42,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/profil" component={Profile} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/comenzi" component={Orders} />
               </Switch>
             </div>
             <Footer />

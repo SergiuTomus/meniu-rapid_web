@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserProfile } from '../../store/actions/profileActions';
-import Spinner from '../layout/Spinner'
+import Spinner from '../layout/Spinner';
 
 class Profile extends Component {
 
@@ -10,7 +10,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.props.userProfile.profile)
     const { user } = this.props.auth;
     const { profile, loading } = this.props.userProfile;
     let profileContent;
