@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { cancelOrder, acceptOrder } from '../../store/actions/ordersActions';
 
-export default class OrderItem extends Component {
+class NewOrder extends Component {
+  onCancelClick = (id) => {
+    this.props.cancelOrder(id);
+  }
+  onAcceptClick = (id) => {
+    this.props.acceptOrder(id);
+  }
+
   render() {
     const product_orders = this.props.order.Product_Orders;
-    console.log(product_orders);
     const productsList = product_orders.map(product => {
       return (<p key={product.id} className="text-left ">
         <i className="fas fa-check text-danger mr-2" />
@@ -40,8 +48,10 @@ export default class OrderItem extends Component {
           </div>
           <div className="col-md-12">
             <span>
-              <button type="button" className="btn btn-info mr-3 float-right">Accepta</button>
-              <button type="button" className="btn btn-danger mr-3 float-right">Anuleaza</button>
+              <button onClick={() => this.onAcceptClick(this.props.order.id)}
+                type="button" className="btn btn-info mr-3 float-right">Accepta</button>
+              <button onClick={() => this.onCancelClick(this.props.order.id)}
+                type="button" className="btn btn-danger mr-3 float-right">Anuleaza</button>
             </span>
           </div>
         </div>
@@ -49,3 +59,10 @@ export default class OrderItem extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { cancelOrder, acceptOrder })(NewOrder);

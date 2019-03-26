@@ -1,4 +1,4 @@
-import { GET_ORDERS } from "../actions/types";
+import { GET_ORDERS, CANCEL_ORDER, ACCEPT_ORDER } from "../actions/types";
 
 const initialState = {
   orders: [],
@@ -14,16 +14,15 @@ export default (state = initialState, action) => {
         orders: action.payload.new_orders,
         loading: false
       };
-    case "":
+    case CANCEL_ORDER:
       return {
         ...state,
-        profile: action.payload,
-        loading: false
+        orders: state.orders.filter(order => order.id !== action.payload)
       };
-    case "CLEAR_PROFILE":
+    case ACCEPT_ORDER:
       return {
         ...state,
-        profile: null
+        orders: state.orders.filter(order => order.id !== action.payload)
       };
     default:
       return state;

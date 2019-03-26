@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getNewOrders } from '../../store/actions/ordersActions';
 import OrdersFeed from './OrdersFeed';
+import Profile from '../profile/Profile';
+import { Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Orders.css';
 
 class Orders extends Component {
   componentDidMount() {
     this.props.getNewOrders();
-  }
-
-  selectneworders() {
-
   }
 
   render() {
@@ -31,14 +30,22 @@ class Orders extends Component {
             <div className="col-md-12">
               <nav>
                 <div className="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                  <a className="nav-item nav-link active text-secondary" data-toggle="tab" href="#" aria-selected="true">Comenzi noi</a>
-                  <a className="nav-item nav-link text-secondary" data-toggle="tab" href="#" aria-selected="false">Comenzi preluate</a>
-                  <a className="nav-item nav-link text-secondary" data-toggle="tab" href="#" aria-selected="false">Istoric comenzi</a>
+                  <NavLink className="nav-item nav-link text-secondary" activeClassName="active" to="/comenzi/comenzi-noi">
+                    Comenzi noi
+                  </NavLink>
+                  <NavLink className="nav-item nav-link text-secondary" activeClassName="active" to="/comenzi/comenzi-preluate">
+                    Comenzi preluate
+                  </NavLink>
+                  <NavLink className="nav-item nav-link text-secondary" activeClassName="active" to="/comenzi/istoric-comenzi">
+                    Istoric comenzi
+                  </NavLink>
                 </div>
               </nav>
             </div>
             <div className="col-md-12">
-              {ordersContent}
+              <Route exact path="/comenzi/comenzi-noi" render={(props) => (<div>{ordersContent}</div>)} />
+              <Route exact path="/comenzi/comenzi-preluate" component={Spinner} />
+              <Route exact path="/comenzi/istoric-comenzi" component={Spinner} />
               <br /><br /><br />
             </div>
           </div>

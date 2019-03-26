@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
-import OrderItem from './OrderItem';
+import { connect } from 'react-redux';
+import { getNewOrders } from '../../store/actions/ordersActions';
+import NewOrder from './NewOrder';
+
 
 class OrdersFeed extends Component {
+  componentDidMount() {
+    this.props.getNewOrders();
+  }
+
   render() {
-    const new_orders = this.props.orders;
-    console.log('what is', new_orders);
-    return new_orders.map(order => <OrderItem key={order.id} order={order} />);
+    const { orders, loading } = this.props.orders;
+    // let ordersContent;
+
+    // if (orders === null || loading) {
+    //   ordersContent = <Spinner />;
+    // } else {
+    //   ordersContent = <OrdersFeed orders={orders} />;
+    // }
+
+    console.log('what is', orders);
+    return orders.map(order => <NewOrder key={order.id} order={order} />);
   }
 }
 
-export default OrdersFeed;
+const mapStateToProps = state => ({
+  orders: state.orders
+});
+
+export default connect(mapStateToProps, { getNewOrders })(OrdersFeed);

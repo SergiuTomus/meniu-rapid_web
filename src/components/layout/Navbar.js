@@ -16,7 +16,7 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/comenzi">
+          <Link className="nav-link" to="/comenzi/comenzi-noi">
             Comenzi
           </Link>
         </li>
@@ -61,7 +61,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4" style={{ color: 'white' }}>
         <div className="container">
-          <Link className="navbar-brand" to={authenticated ? "/comenzi" : "/"}>
+          <Link className="navbar-brand" to={authenticated ? "/comenzi/comenzi-noi" : "/"}>
             MeniuRapid
           </Link>
           <button
