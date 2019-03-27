@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { cancelOrder, acceptOrder } from '../../store/actions/ordersActions';
+import { deliverOrder } from '../../store/actions/ordersActions';
 import { faHome, faPhoneSquare, faShoppingCart, faUser, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-class NewOrder extends Component {
-  onCancelClick = (id) => {
-    this.props.cancelOrder(id, this.props.auth.user.name);
-  }
-  onAcceptClick = (id) => {
-    this.props.acceptOrder(id, this.props.auth.user.name);
+class ReceivedOrder extends Component {
+  onDeliveryClick = (id) => {
+    this.props.deliverOrder(id);
   }
 
   render() {
@@ -51,10 +47,8 @@ class NewOrder extends Component {
           </div>
           <div className="col-md-12">
             <span>
-              <button onClick={() => this.onAcceptClick(this.props.order.id)}
-                type="button" className="btn btn-info mr-3 float-right">Accepta</button>
-              <button onClick={() => this.onCancelClick(this.props.order.id)}
-                type="button" className="btn btn-danger mr-3 float-right">Anuleaza</button>
+              <button onClick={() => this.onDeliveryClick(this.props.order.id)}
+                type="button" className="btn btn-success mr-3 float-right">Confirma Livrarea</button>
             </span>
           </div>
         </div>
@@ -68,4 +62,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { cancelOrder, acceptOrder })(NewOrder);
+export default connect(mapStateToProps, { deliverOrder })(ReceivedOrder);

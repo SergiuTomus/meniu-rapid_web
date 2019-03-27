@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
 import { getNewOrders } from '../../store/actions/ordersActions';
-import OrdersFeed from './OrdersFeed';
-import Profile from '../profile/Profile';
+import NewOrdersFeed from './NewOrdersFeed';
+import ReceivedOrdersFeed from './ReceivedOrdersFeed';
+import HistoryOrdersFeed from './HistoryOrdersFeed';
 import { Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import './Orders.css';
+import '../../style/Orders.css';
 
 class Orders extends Component {
-  componentDidMount() {
-    this.props.getNewOrders();
-  }
 
   render() {
-    const { orders, loading } = this.props.orders;
-    let ordersContent;
+    // const { orders, loading } = this.props.orders;
+    // let ordersContent;
 
-    if (orders === null || loading) {
-      ordersContent = <Spinner />;
-    } else {
-      ordersContent = <OrdersFeed orders={orders} />;
-    }
+    // if (orders === null || loading) {
+    //   ordersContent = <Spinner />;
+    // } else {
+    //   ordersContent = <OrdersFeed orders={orders} />;
+    // }
 
     return (
       <div className="feed">
@@ -43,9 +40,9 @@ class Orders extends Component {
               </nav>
             </div>
             <div className="col-md-12">
-              <Route exact path="/comenzi/comenzi-noi" render={(props) => (<div>{ordersContent}</div>)} />
-              <Route exact path="/comenzi/comenzi-preluate" component={Spinner} />
-              <Route exact path="/comenzi/istoric-comenzi" component={Spinner} />
+              <Route exact path="/comenzi/comenzi-noi" component={NewOrdersFeed} />
+              <Route exact path="/comenzi/comenzi-preluate" component={ReceivedOrdersFeed} />
+              <Route exact path="/comenzi/istoric-comenzi" component={HistoryOrdersFeed} />
               <br /><br /><br />
             </div>
           </div>

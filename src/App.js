@@ -13,7 +13,7 @@ import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Profile from './components/profile/Profile';
 import Orders from './components/orders/Orders';
-import './App.css';
+import './style/App.css';
 
 // Check for token
 if (localStorage.jwtToken) {

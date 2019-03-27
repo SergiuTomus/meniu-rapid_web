@@ -13,21 +13,24 @@ class Profile extends Component {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.userProfile;
     let profileContent;
-
+    console.log(profile);
     if (profile === null || loading) {
       profileContent = <Spinner />;
     } else {
-      profileContent = <h4>{profile.user.user_status}: {user.name}</h4>
+      profileContent = (
+        <div className="col-md-12">
+          <h3>Restaurant <b>{profile.restaurant.name}</b></h3>
+          <br />
+          <h5>{profile.user.user_status}: <b>{user.name}</b></h5>
+        </div>
+      )
     }
 
     return (
       <div className="profile">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-5">Spartan</h1>
-              {profileContent}
-            </div>
+            {profileContent}
           </div>
         </div>
       </div>
