@@ -16,13 +16,13 @@ class HistoryOrder extends Component {
     let restaurant_user = this.props.order.restaurant_user;
     let bg_color = "bg-success";
     let handled = "Preluata"
-    if (this.props.order.status == "in asteptare") {
+    if (this.props.order.status === "in asteptare") {
       bg_color = "bg-warning";
     }
-    if (this.props.order.status == "preluata") {
+    if (this.props.order.status === "preluata") {
       bg_color = "bg-info";
     }
-    if (this.props.order.status == "anulata") {
+    if (this.props.order.status === "anulata") {
       bg_color = "bg-danger";
       handled = "Anulata"
     }
