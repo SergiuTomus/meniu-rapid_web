@@ -15,9 +15,6 @@ class NewOrder extends Component {
 
   render() {
     const product_orders = this.props.order.Product_Orders;
-    const date = () => this.props.order.createdAt;
-    console.log(typeof (this.props.order));
-    const hour = this.props.order.createdAt;
     const productsList = product_orders.map(product => {
       return (<p key={product.id} className="text-left ">
         <FontAwesomeIcon icon={faCheck} className="text-danger mr-2" />
@@ -39,14 +36,6 @@ class NewOrder extends Component {
             <p className="text-left">
               <FontAwesomeIcon icon={faHome} className="text-info mr-2" />
               {this.props.order.delivery_address}
-            </p>
-            <p className="text-left">
-              <FontAwesomeIcon icon={faHome} className="text-info mr-2" />
-              {}
-            </p>
-            <p className="text-left">
-              <FontAwesomeIcon icon={faHome} className="text-info mr-2" />
-              {}
             </p>
           </div>
           <div className="col-md-5">

@@ -50,7 +50,7 @@ export const getReceivedOrders = (id) => {
   };
 };
 
-// Get received orders
+// Get all orders
 export const getAllOrders = (id) => {
   return (dispatch) => {
     dispatch(setOrdersLoading());
