@@ -98,6 +98,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { loginUser: loginUser };  // as an object with action creators
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login));
+export default connect(mapStateToProps, { loginUser })(withRouter(Login));
