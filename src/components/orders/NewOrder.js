@@ -18,7 +18,7 @@ class NewOrder extends Component {
     const productsList = product_orders.map(product => {
       return (<p key={product.id} className="text-left ">
         <FontAwesomeIcon icon={faCheck} className="text-danger mr-2" />
-        {product.product_name} <span className="text-danger ml-2"> x {product.quantity}</span>
+        {product.product_name} ({product.single_price} lei)<span className="text-danger ml-2"></span>
       </p>)
     })
     return (

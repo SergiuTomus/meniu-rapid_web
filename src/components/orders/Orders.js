@@ -11,15 +11,6 @@ import '../../style/Orders.css';
 class Orders extends Component {
 
   render() {
-    // const { orders, loading } = this.props.orders;
-    // let ordersContent;
-
-    // if (orders === null || loading) {
-    //   ordersContent = <Spinner />;
-    // } else {
-    //   ordersContent = <OrdersFeed orders={orders} />;
-    // }
-
     return (
       <div className="feed">
         <div className="container">
