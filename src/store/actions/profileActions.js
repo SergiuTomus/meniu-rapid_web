@@ -13,7 +13,7 @@ export const getUserProfile = () => {
   return (dispatch) => {
     dispatch(setProfileLoading());
     axios
-      .get('http://localhost:3005/admin/user')
+      .get('https://rocky-lowlands-58601.herokuapp.com/admin/user')
       .then(res =>
         dispatch({
           type: GET_PROFILE,

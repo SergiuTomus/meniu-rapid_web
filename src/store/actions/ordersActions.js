@@ -13,7 +13,7 @@ export const getNewOrders = (id) => {
   return (dispatch) => {
     dispatch(setOrdersLoading());
     axios
-      .get(`http://localhost:3005/admin/new-orders/${id}`)
+      .get(`https://rocky-lowlands-58601.herokuapp.com/admin/new-orders/${id}`)
       .then(res =>
         dispatch({
           type: GET_NEW_ORDERS,
@@ -34,7 +34,7 @@ export const getReceivedOrders = (id) => {
   return (dispatch) => {
     dispatch(setOrdersLoading());
     axios
-      .get(`http://localhost:3005/admin/received-orders/${id}`)
+      .get(`https://rocky-lowlands-58601.herokuapp.com/admin/received-orders/${id}`)
       .then(res =>
         dispatch({
           type: GET_RECEIVED_ORDERS,
@@ -55,7 +55,7 @@ export const getAllOrders = (id) => {
   return (dispatch) => {
     dispatch(setOrdersLoading());
     axios
-      .get(`http://localhost:3005/admin/all-orders/${id}`)
+      .get(`https://rocky-lowlands-58601.herokuapp.com/admin/all-orders/${id}`)
       .then(res =>
         dispatch({
           type: GET_ALL_ORDERS,
@@ -75,7 +75,7 @@ export const getAllOrders = (id) => {
 export const cancelOrder = (id, user) => {
   return (dispatch) => {
     axios
-      .patch(`http://localhost:3005/admin/orders/${id}`, { status: "anulata", restaurant_user: user })
+      .patch(`https://rocky-lowlands-58601.herokuapp.com/admin/orders/${id}`, { status: "anulata", restaurant_user: user })
       .then(res =>
         dispatch({
           type: CANCEL_ORDER,
@@ -95,7 +95,7 @@ export const cancelOrder = (id, user) => {
 export const acceptOrder = (id, user) => {
   return (dispatch) => {
     axios
-      .patch(`http://localhost:3005/admin/orders/${id}`, { status: "preluata", restaurant_user: user })
+      .patch(`https://rocky-lowlands-58601.herokuapp.com/admin/orders/${id}`, { status: "preluata", restaurant_user: user })
       .then(res =>
         dispatch({
           type: ACCEPT_ORDER,
@@ -115,7 +115,7 @@ export const acceptOrder = (id, user) => {
 export const deliverOrder = (id) => {
   return (dispatch) => {
     axios
-      .patch(`http://localhost:3005/admin/orders/${id}`, { status: "livrata" })
+      .patch(`https://rocky-lowlands-58601.herokuapp.com/admin/orders/${id}`, { status: "livrata" })
       .then(res =>
         dispatch({
           type: DELIVER_ORDER,

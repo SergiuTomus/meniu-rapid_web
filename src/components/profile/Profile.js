@@ -26,7 +26,7 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-12 text-center">
               <br />
-              <img src={`http://localhost:3005/${profile.restaurant.image_url}`}
+              <img src={`https://rocky-lowlands-58601.herokuapp.com/${profile.restaurant.image_url}`}
                 className="col-md-4 col-8 rounded-circle" alt={profile.restaurant.name} />
               <div className="text-center">
                 <br />
